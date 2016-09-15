@@ -19,16 +19,12 @@
 
 package ws.ament.bootee.spark;
 
-import spark.servlet.*;
+import spark.servlet.SparkFilter;
 
 import javax.inject.Inject;
-import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import java.io.IOException;
 
 @WebFilter("/*")
 public class CDISparkFilter extends SparkFilter{
@@ -36,13 +32,6 @@ public class CDISparkFilter extends SparkFilter{
     private SparkApplication sparkApplication;
     @Override
     protected spark.servlet.SparkApplication getApplication(FilterConfig filterConfig) throws ServletException {
-        System.out.println("Getting app");
         return sparkApplication;
-    }
-
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println("Do request.");
-        super.doFilter(request, response, chain);
     }
 }

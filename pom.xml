@@ -29,6 +29,8 @@
     <modules>
         <module>jetty</module>
         <module>spark</module>
+        <module>spark-full</module>
+        <module>springboot</module>
     </modules>
     <packaging>pom</packaging>
     <properties>

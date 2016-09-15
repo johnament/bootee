@@ -17,13 +17,24 @@
  *  under the License.
  */
 
-package ws.ament.bootee.spark;
+package ws.ament.bootee.springboot.cxf;
 
-import static spark.Spark.get;
+import io.swagger.annotations.Api;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-// http://localhost:4567/
-public class SparkRunner {
-    public static void main(String[] args) {
-        get("/", (req, resp) -> "Hello, World!");
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+
+@Path("/sayHello")
+@Api("/sayHello")
+@Service
+@Component
+public class HelloService {
+    @GET
+    @Path("/{id}")
+    public String sayHello(@PathParam("id") String id) {
+        return "Hello, "+id;
     }
 }

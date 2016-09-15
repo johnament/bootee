@@ -19,12 +19,11 @@
 
 package ws.ament.bootee.spark;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 
-@ApplicationScoped
-public class SparkApplication implements spark.servlet.SparkApplication{
-    @Override
-    public void init() {
-        spark.Spark.get("/", (req, resp) -> "hello, world");
+@RequestScoped
+public class GreeterService {
+    public String greet() {
+        return "Hello, World!";
     }
 }

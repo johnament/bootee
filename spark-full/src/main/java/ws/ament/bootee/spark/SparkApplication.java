@@ -19,11 +19,17 @@
 
 package ws.ament.bootee.spark;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+
 import static spark.Spark.get;
 
-// http://localhost:4567/
-public class SparkRunner {
-    public static void main(String[] args) {
-        get("/", (req, resp) -> "Hello, World!");
+@ApplicationScoped
+public class SparkApplication implements spark.servlet.SparkApplication{
+    @Inject
+    private GreeterService greeterService;
+    @Override
+    public void init() {
+        get("/", (req, resp) -> greeterService.greet());
     }
 }
