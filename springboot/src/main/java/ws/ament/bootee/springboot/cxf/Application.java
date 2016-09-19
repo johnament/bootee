@@ -30,6 +30,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import static java.util.Arrays.asList;
+
 @SpringBootApplication
 public class Application {
 
@@ -48,8 +50,8 @@ public class Application {
         JAXRSServerFactoryBean endpoint = new JAXRSServerFactoryBean();
         endpoint.setBus(bus);
         endpoint.setAddress("/");
-        endpoint.setServiceBeans(Arrays.<Object>asList(helloService));
-        endpoint.setFeatures(Arrays.asList(new Swagger2Feature()));
+        endpoint.setServiceBeans(asList(helloService));
+        endpoint.setFeatures(asList(new Swagger2Feature()));
         return endpoint.create();
     }
 }
